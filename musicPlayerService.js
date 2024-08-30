@@ -1,4 +1,4 @@
-import TrackPlayer, {play,pause, RepeatMode} from "react-native-track-player";
+import TrackPlayer, {Event,RepeatMode} from "react-native-track-player";
 import { playListData } from "./src/constants";
 
 //track player setup
@@ -6,10 +6,10 @@ export async function setupPlayer(){
     let isSetup = false
 //this try block is if trackPlayer is ready otherwise catch block player ko setup kryga
     try {
-      TrackPlayer.getCurrentTrack() 
+      await TrackPlayer.getCurrentTrack() 
       isSetup=true 
     } catch (error) {
-        TrackPlayer.setupPlayer()
+      await TrackPlayer.setupPlayer()
         isSetup = true
     }
 //in finally we will return if player is ready or not
